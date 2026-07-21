@@ -1,0 +1,380 @@
+.navbar{
+
+    width:100%;
+    height:75px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 70px;
+
+    background:var(--card);
+
+    border-bottom:1px solid var(--border);
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.logo a{
+
+    text-decoration:none;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+.navLinks{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:35px;
+
+    list-style:none;
+
+}
+
+.navLinks a{
+
+    text-decoration:none;
+
+    color:var(--text-primary);
+
+    font-size:17px;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.navLinks a:hover{
+
+    color:var(--primary);
+
+}
+
+.navLinks svg{
+
+    font-size:22px;
+
+}
+
+.iconLink{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.badge{
+
+    position:absolute;
+
+    top:-10px;
+
+    right:-12px;
+
+    min-width:20px;
+
+    height:20px;
+
+    padding:0 6px;
+
+    background:#ef4444;
+
+    color:white;
+
+    border-radius:50px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    border:2px solid var(--card);
+
+}
+
+.themeBtn{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--surface);
+
+    color:var(--text-primary);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    font-size:18px;
+
+}
+
+.themeBtn:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+    transform:rotate(180deg);
+
+}
+
+/* ========================= */
+
+.profileContainer{
+
+    position:relative;
+
+}
+
+.profileBtn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:var(--text-primary);
+
+    font-size:18px;
+
+}
+
+.avatar{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid var(--primary);
+
+}
+
+.dropdown{
+
+    position:absolute;
+
+    top:60px;
+
+    right:0;
+
+    width:260px;
+
+    background:rgba(255,255,255,.9);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:18px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.18);
+
+    overflow:hidden;
+
+    animation:dropdown .25s ease;
+
+}
+
+body[data-theme="dark"] .dropdown{
+
+    background:rgba(31,41,55,.96);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+@keyframes dropdown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.dropdown h4{
+
+    padding:18px 20px 5px;
+
+    color:var(--text-primary);
+
+    font-size:18px;
+
+}
+
+.dropdown p{
+
+    padding:0 20px 15px;
+
+    color:var(--text-secondary);
+
+    font-size:13px;
+
+    word-break:break-word;
+
+}
+
+.dropdown hr{
+
+    border:none;
+
+    height:1px;
+
+    background:var(--border);
+
+}
+
+.dropdown a,
+
+.dropdown button{
+
+    width:100%;
+
+    padding:15px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    color:var(--text-primary);
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.dropdown a:hover,
+
+.dropdown button:hover{
+
+    background:var(--surface);
+
+    color:var(--primary);
+
+}
+
+.dropdown button{
+
+    color:#ef4444;
+
+}
+
+.dropdown button:hover{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+}
+
+@media(max-width:900px){
+
+    .navbar{
+
+        padding:0 25px;
+
+    }
+
+    .navLinks{
+
+        gap:18px;
+
+    }
+
+}
+
+@media(max-width:650px){
+
+    .logo a{
+
+        font-size:22px;
+
+    }
+
+    .navLinks{
+
+        gap:14px;
+
+    }
+
+    .dropdown{
+
+        width:220px;
+
+        right:-10px;
+
+    }
+
+}

@@ -1,0 +1,187 @@
+.newsletter{
+
+    padding:100px 8%;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    transition:.35s;
+
+}
+
+.container{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+    color:white;
+
+}
+
+.container h2{
+
+    font-size:44px;
+
+    margin-bottom:20px;
+
+    font-weight:700;
+
+}
+
+.container p{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    opacity:.92;
+
+    margin-bottom:40px;
+
+}
+
+.form{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+.form input{
+
+    width:420px;
+
+    max-width:100%;
+
+    padding:18px 22px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:12px;
+
+    background:white;
+
+    color:#111827;
+
+    font-size:16px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.form input::placeholder{
+
+    color:#94a3b8;
+
+}
+
+.form button{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:18px 30px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#111827;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.form button:hover{
+
+    background:black;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.25);
+
+}
+
+/* Dark Theme */
+
+body[data-theme="dark"] .newsletter{
+
+    background:linear-gradient(135deg,#1e3a8a,#1d4ed8);
+
+}
+
+body[data-theme="dark"] .form input{
+
+    background:var(--card);
+
+    color:var(--text-primary);
+
+}
+
+body[data-theme="dark"] .form input::placeholder{
+
+    color:var(--text-secondary);
+
+}
+
+body[data-theme="dark"] .form button{
+
+    background:var(--background);
+
+    color:var(--text-primary);
+
+}
+
+body[data-theme="dark"] .form button:hover{
+
+    background:#0f172a;
+
+}
+
+@media(max-width:768px){
+
+.form{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.form input{
+
+    width:100%;
+
+}
+
+.form button{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+}

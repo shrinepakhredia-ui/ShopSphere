@@ -1,0 +1,201 @@
+.shipping{
+
+    min-height:100vh;
+
+    padding:80px 8%;
+
+    background:var(--background);
+
+    transition:.35s;
+
+}
+
+.header{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+.header span{
+
+    display:inline-block;
+
+    background:rgba(37,99,235,.15);
+
+    color:var(--primary-color);
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+}
+
+.header h1{
+
+    font-size:46px;
+
+    color:var(--text-primary);
+
+    margin-bottom:18px;
+
+}
+
+.header p{
+
+    max-width:760px;
+
+    margin:auto;
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+    font-size:18px;
+
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:30px;
+
+}
+
+.card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:35px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 25px 45px rgba(37,99,235,.15);
+
+    border-color:rgba(37,99,235,.35);
+
+}
+
+.icon{
+
+    width:75px;
+
+    height:75px;
+
+    margin:auto;
+
+    margin-bottom:22px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    color:white;
+
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+    box-shadow:0 15px 35px rgba(37,99,235,.35);
+
+}
+
+.card h2{
+
+    color:var(--text-primary);
+
+    margin-bottom:18px;
+
+    font-size:24px;
+
+}
+
+.card p{
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+    font-size:16px;
+
+}
+
+.card strong{
+
+    color:var(--primary-color);
+
+}
+
+@media(max-width:900px){
+
+    .grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .shipping{
+
+        padding:70px 20px;
+
+    }
+
+    .header h1{
+
+        font-size:34px;
+
+    }
+
+    .header p{
+
+        font-size:16px;
+
+    }
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .card{
+
+        padding:28px;
+
+    }
+
+    .icon{
+
+        width:65px;
+
+        height:65px;
+
+        padding:15px;
+
+    }
+
+}

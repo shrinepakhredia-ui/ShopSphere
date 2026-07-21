@@ -1,0 +1,421 @@
+.about{
+
+    min-height:100vh;
+
+    padding:70px 8%;
+
+    background:var(--background);
+
+    color:var(--text-primary);
+
+    transition:.35s;
+
+}
+
+/* HERO */
+
+.hero{
+
+    max-width:900px;
+
+    margin:0 auto 70px;
+
+    text-align:center;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    padding:10px 22px;
+
+    border-radius:30px;
+
+    background:rgba(37,99,235,.15);
+
+    color:var(--primary-color);
+
+    font-weight:600;
+
+    margin-bottom:22px;
+
+}
+
+.hero h1{
+
+    font-size:52px;
+
+    margin-bottom:25px;
+
+    color:var(--text-primary);
+
+}
+
+.hero p{
+
+    font-size:18px;
+
+    color:var(--text-secondary);
+
+    line-height:1.9;
+
+}
+
+/* INFO CARDS */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+    margin-bottom:80px;
+
+}
+
+.card{
+
+    background:var(--card);
+
+    border-radius:22px;
+
+    padding:35px;
+
+    text-align:center;
+
+    border:1px solid var(--border);
+
+    transition:.35s;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 25px 50px rgba(37,99,235,.18);
+
+}
+
+.icon{
+
+    font-size:42px;
+
+    color:var(--primary-color);
+
+    margin-bottom:20px;
+
+}
+
+.card h2{
+
+    margin-bottom:15px;
+
+    font-size:24px;
+
+}
+
+.card p{
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+}
+
+/* COMMON SECTION */
+
+.section{
+
+    margin-bottom:80px;
+
+}
+
+.section h2{
+
+    text-align:center;
+
+    font-size:40px;
+
+    margin-bottom:45px;
+
+    color:var(--text-primary);
+
+}
+
+/* TECH  */
+
+.techGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:25px;
+
+}
+
+.tech{
+
+    background:var(--card);
+
+    border-radius:18px;
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    border:1px solid var(--border);
+
+    transition:.35s;
+
+}
+
+.tech:hover{
+
+    transform:translateY(-8px);
+
+    background:var(--primary-color);
+
+    color:white;
+
+}
+
+.tech svg{
+
+    font-size:42px;
+
+    margin-bottom:18px;
+
+}
+
+.tech span{
+
+    display:block;
+
+    font-weight:600;
+
+    font-size:17px;
+
+}
+
+/* FEATURES */
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+}
+
+.features div{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    padding:22px;
+
+    border-radius:16px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.features div:hover{
+
+    background:var(--primary-color);
+
+    color:white;
+
+    transform:translateX(6px);
+
+}
+
+/* CREATOR */
+
+.creator{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:25px;
+
+    padding:60px 40px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.creatorIcon{
+
+    font-size:65px;
+
+    color:var(--primary-color);
+
+    margin-bottom:20px;
+
+}
+
+.creator h2{
+
+    font-size:20px;
+
+    color:var(--text-secondary);
+
+    margin-bottom:10px;
+
+}
+
+.creator h3{
+
+    font-size:34px;
+
+    margin-bottom:15px;
+
+}
+
+.creator p{
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+    max-width:750px;
+
+    margin:10px auto;
+
+}
+
+/* BOTTOM */
+
+.bottom{
+
+    margin-top:70px;
+
+    text-align:center;
+
+    color:var(--text-secondary);
+
+}
+
+.bottom svg{
+
+    font-size:45px;
+
+    color:var(--primary-color);
+
+    margin-bottom:20px;
+
+}
+
+.bottom p{
+
+    line-height:1.9;
+
+    font-size:18px;
+
+}
+
+/*RESPONSIVE*/
+
+@media(max-width:1100px){
+
+    .grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .techGrid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .about{
+
+        padding:60px 20px;
+
+    }
+
+    .hero h1{
+
+        font-size:40px;
+
+    }
+
+    .section h2{
+
+        font-size:32px;
+
+    }
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .techGrid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .features{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    .hero h1{
+
+        font-size:32px;
+
+    }
+
+    .techGrid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .creator{
+
+        padding:45px 25px;
+
+    }
+
+    .creator h3{
+
+        font-size:28px;
+
+    }
+
+}
