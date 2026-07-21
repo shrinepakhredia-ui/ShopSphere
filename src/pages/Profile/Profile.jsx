@@ -96,7 +96,7 @@ function Profile() {
 
             :
 
-            "Email Not Verified"
+            "Email Verified"
 
           }
 
