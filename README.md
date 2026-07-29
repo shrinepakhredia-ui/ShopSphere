@@ -16,6 +16,25 @@ Designed to deliver a clean shopping experience with authentication, cart manage
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript&logoColor=black)
 ![CSS Modules](https://img.shields.io/badge/CSS-Modules-1572B6?logo=css3&logoColor=white)
 
+<p align="center">
+
+🌐 <strong>Live Demo</strong><br>
+https://shop-sphere-two-pi.vercel.app
+
+</p>
+
+<p align="center">
+
+<a href="https://shop-sphere-two-pi.vercel.app">
+<img src="https://img.shields.io/badge/Live-Demo-success?style=for-the-badge&logo=vercel" />
+</a>
+
+<a href="https://github.com/shrinepakhredia-ui/ShopSphere">
+<img src="https://img.shields.io/badge/Source-Code-black?style=for-the-badge&logo=github" />
+</a>
+
+</p>
+
 </div>
 
 ---
@@ -127,7 +146,7 @@ This project was developed to strengthen practical skills in **React, Context AP
 
 ---
 
-# # 📸 Application Preview
+# 📸 Application Preview
 
 ## 🏠 Home
 
@@ -370,7 +389,7 @@ Some planned enhancements include:
 
 **B.Tech – Artificial Intelligence & Machine Learning**
 
-Interested in Artificial Intelligence, Machine Learning, and building projects that combine intelligent systems with practical applications.
+Artificial Intelligence & Machine Learning undergraduate with a strong interest in building practical AI applications and modern web solutions. Passionate about solving real-world problems through intelligent systems and clean user experiences.
 
 # 🔗 Connect With Me
 
@@ -381,6 +400,10 @@ https://github.com/shrinepakhredia-ui
 ### LinkedIn
 
 https://www.linkedin.com/in/shrine-pakhredia-57a75632a
+
+### Live Website
+
+https://shop-sphere-two-pi.vercel.app
 
 ---
 
