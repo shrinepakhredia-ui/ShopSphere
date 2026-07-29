@@ -359,33 +359,38 @@ body[data-theme="dark"] .dropdown{
 
     .navbar{
 
-        padding:0 16px;
+        padding:0 10px;
 
         height:65px;
 
     }
 
+    .logo{
+        flex-shrink:0;
+        margin-right:10px;
+    }
+
     .logo a{
 
-        font-size:20px;
+        font-size:18px;
 
     }
 
     .navLinks{
 
-        gap:12px;
+        gap:8px;
 
     }
 
     .navLinks a{
 
-        font-size:15px;
+        font-size:14px;
 
     }
 
     .navLinks svg{
 
-        font-size:20px;
+        font-size:18px;
 
     }
 
@@ -417,13 +422,4 @@ body[data-theme="dark"] .dropdown{
         right:-5px;
 
     }
-
-}
-
-.logo{
-    flex-shrink:0;
-}
-
-.navLinks{
-    gap:10px;
 }
