@@ -11,6 +11,8 @@ import {
   FaUserCircle,
   FaChevronDown,
   FaBoxOpen,
+  FaBars,
+  FaTimes,
 } from "react-icons/fa";
 
 import { toast } from "react-toastify";
@@ -20,12 +22,13 @@ import { useWishlist } from "../../context/WishlistContext";
 import { useTheme } from "../../context/ThemeContext";
 import { useAuth } from "../../context/AuthContext";
 
-
 import styles from "./Navbar.module.css";
 
 function Navbar() {
 
   const [showMenu, setShowMenu] = useState(false);
+
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const { totalItems } = useCart();
 
@@ -45,6 +48,8 @@ function Navbar() {
 
       setShowMenu(false);
 
+      setMobileMenu(false);
+
     }
 
     catch {
@@ -59,21 +64,124 @@ function Navbar() {
 
     <nav className={styles.navbar}>
 
-      <div className={styles.logo}>
+      {/* Left */}
 
-        <Link to="/">🛒 ShopSphere</Link>
+      <div className={styles.leftSection}>
+
+        <button
+          className={styles.menuBtn}
+          onClick={() => setMobileMenu(true)}
+        >
+
+          <FaBars />
+
+        </button>
+
+        <div className={styles.logo}>
+
+          <Link to="/">🛒 ShopSphere</Link>
+
+        </div>
 
       </div>
 
+      {/* Mobile Drawer */}
+
+      <div
+        className={`${styles.mobileMenu} ${mobileMenu ? styles.showMenu : ""}`}
+      >
+
+        <div className={styles.mobileHeader}>
+
+          <h2>Menu</h2>
+
+          <button
+            onClick={() => setMobileMenu(false)}
+            className={styles.closeBtn}
+          >
+
+            <FaTimes />
+
+          </button>
+
+        </div>
+
+        <Link
+          to="/"
+          onClick={() => setMobileMenu(false)}
+        >
+
+          Home
+
+        </Link>
+
+        <Link
+          to="/products"
+          onClick={() => setMobileMenu(false)}
+        >
+
+          Products
+
+        </Link>
+
+        <Link
+          to="/about"
+          onClick={() => setMobileMenu(false)}
+        >
+
+          About Us
+
+        </Link>
+
+        <Link
+          to="/faqs"
+          onClick={() => setMobileMenu(false)}
+        >
+
+          FAQs
+
+        </Link>
+
+        <Link
+          to="/shipping"
+          onClick={() => setMobileMenu(false)}
+        >
+
+          Shipping Policy
+
+        </Link>
+
+        <Link
+          to="/returns"
+          onClick={() => setMobileMenu(false)}
+        >
+
+          Returns Policy
+
+        </Link>
+
+      </div>
+
+      {mobileMenu && (
+
+        <div
+          className={styles.overlay}
+          onClick={() => setMobileMenu(false)}
+        />
+
+      )}
+
+      {/* Right */}
+
       <ul className={styles.navLinks}>
 
-        <li>
+        <li className={styles.desktopLink}>
 
           <Link to="/">Home</Link>
 
         </li>
 
-        <li>
+        <li className={styles.desktopLink}>
 
           <Link to="/products">Products</Link>
 
@@ -88,19 +196,15 @@ function Navbar() {
 
             <FaHeart />
 
-            {
+            {wishlistItems.length > 0 && (
 
-              wishlistItems.length > 0 && (
+              <span className={styles.badge}>
 
-                <span className={styles.badge}>
+                {wishlistItems.length}
 
-                  {wishlistItems.length}
+              </span>
 
-                </span>
-
-              )
-
-            }
+            )}
 
           </Link>
 
@@ -115,19 +219,15 @@ function Navbar() {
 
             <FaShoppingCart />
 
-            {
+            {totalItems > 0 && (
 
-              totalItems > 0 && (
+              <span className={styles.badge}>
 
-                <span className={styles.badge}>
+                {totalItems}
 
-                  {totalItems}
+              </span>
 
-                </span>
-
-              )
-
-            }
+            )}
 
           </Link>
 
@@ -136,26 +236,13 @@ function Navbar() {
         <li>
 
           <button
-
             className={styles.themeBtn}
-
             onClick={toggleTheme}
-
           >
 
-            {
-
-              theme === "light"
-
-                ?
-
-                <FaMoon />
-
-                :
-
-                <FaSun />
-
-            }
+            {theme === "light"
+              ? <FaMoon />
+              : <FaSun />}
 
           </button>
 
@@ -165,181 +252,146 @@ function Navbar() {
 
           !currentUser ?
 
-          (
+            (
 
-            <li>
+              <li>
 
-              <Link to="/login">
+                <Link to="/login">
 
-                <FaUser />
+                  <FaUser />
 
-              </Link>
+                </Link>
 
-            </li>
+              </li>
 
-          )
+            )
 
-          :
+            :
 
-          (
+            (
 
-            <li className={styles.profileContainer}>
+              <li className={styles.profileContainer}>
 
-              <button
+                <button
+                  className={styles.profileBtn}
+                  onClick={() => setShowMenu(!showMenu)}
+                >
 
-                className={styles.profileBtn}
+                  {
 
-                onClick={() =>
+                    currentUser.photoURL ?
 
-                  setShowMenu(!showMenu)
+                      (
 
-                }
+                        <img
+                          src={currentUser.photoURL}
+                          alt="profile"
+                          className={styles.avatar}
+                        />
 
-              >
+                      )
+
+                      :
+
+                      (
+
+                        <FaUserCircle />
+
+                      )
+
+                  }
+
+                  <FaChevronDown />
+
+                </button>
 
                 {
 
-                  currentUser.photoURL ?
+                  showMenu && (
 
-                  (
+                    <div className={styles.dropdown}>
 
-                    <img
+                      <h4>
 
-                      src={currentUser.photoURL}
+                        {
 
-                      alt="profile"
+                          currentUser.displayName ||
 
-                      className={styles.avatar}
+                          "ShopSphere User"
 
-                    />
+                        }
 
-                  )
+                      </h4>
 
-                  :
+                      <p>
 
-                  (
+                        {currentUser.email}
 
-                    <FaUserCircle />
+                      </p>
+
+                      <hr />
+
+                      <Link
+                        to="/profile"
+                        onClick={() => setShowMenu(false)}
+                      >
+
+                        <FaUser />
+
+                        My Profile
+
+                      </Link>
+
+                      <Link
+                        to="/wishlist"
+                        onClick={() => setShowMenu(false)}
+                      >
+
+                        <FaHeart />
+
+                        Wishlist
+
+                      </Link>
+
+                      <Link
+                        to="/cart"
+                        onClick={() => setShowMenu(false)}
+                      >
+
+                        <FaShoppingCart />
+
+                        Cart
+
+                      </Link>
+
+                      <Link
+                        to="/orders"
+                        onClick={() => setShowMenu(false)}
+                      >
+
+                        <FaBoxOpen />
+
+                        My Orders
+
+                      </Link>
+
+                      <button onClick={handleLogout}>
+
+                        <FaSignOutAlt />
+
+                        Logout
+
+                      </button>
+
+                    </div>
 
                   )
 
                 }
 
-                <FaChevronDown />
+              </li>
 
-              </button>
-
-              {
-
-                showMenu &&
-
-                (
-
-                  <div className={styles.dropdown}>
-
-                    <h4>
-
-                      {
-
-                        currentUser.displayName ||
-
-                        "ShopSphere User"
-
-                      }
-
-                    </h4>
-
-                    <p>
-
-                      {currentUser.email}
-
-                    </p>
-
-                    <hr />
-
-                    <Link
-
-                      to="/profile"
-
-                      onClick={() =>
-
-                        setShowMenu(false)
-
-                      }
-
-                    >
-
-                      <FaUser />
-
-                      My Profile
-
-                    </Link>
-
-                    <Link
-
-                      to="/wishlist"
-
-                      onClick={() =>
-
-                        setShowMenu(false)
-
-                      }
-
-                    >
-
-                      <FaHeart />
-
-                      Wishlist
-
-                    </Link>
-
-                    <Link
-
-                      to="/cart"
-
-                      onClick={() =>
-
-                        setShowMenu(false)
-
-                      }
-
-                    >
-
-                      <FaShoppingCart />
-
-                      Cart
-
-                    </Link>
-
-                    <Link
-                      to="/orders"
-                      onClick={() => setShowMenu(false)}
-                    >
-                      <FaBoxOpen />
-                      My Orders
-                    </Link>
-
-                    <button
-
-                      onClick={handleLogout}
-
-                    >
-
-                      <FaSignOutAlt />
-
-                      Logout
-
-                    </button>
-
-                  </div>
-
-                )
-
-              }
-
-            </li>
-
-          )
+            )
 
         }
 
