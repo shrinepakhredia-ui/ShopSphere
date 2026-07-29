@@ -419,3 +419,11 @@ body[data-theme="dark"] .dropdown{
     }
 
 }
+
+.logo{
+    flex-shrink:0;
+}
+
+.navLinks{
+    gap:10px;
+}
