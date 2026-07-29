@@ -26,7 +26,7 @@ import styles from "./Navbar.module.css";
 
 function Navbar() {
 
-  const [showMenu, setShowMenu] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
 
   const [mobileMenu, setMobileMenu] = useState(false);
 
@@ -46,7 +46,7 @@ function Navbar() {
 
       toast.success("Logged Out Successfully 👋");
 
-      setShowMenu(false);
+      setShowProfile(false);
 
       setMobileMenu(false);
 
@@ -60,128 +60,71 @@ function Navbar() {
 
   }
 
-  return (
+  function closeEverything(){
+
+    setShowProfile(false);
+
+    setMobileMenu(false);
+
+  }
+
+  return(
+
+    <>
 
     <nav className={styles.navbar}>
 
-      {/* Left */}
+      {/* LEFT */}
 
       <div className={styles.leftSection}>
 
         <button
+
           className={styles.menuBtn}
-          onClick={() => setMobileMenu(true)}
+
+          onClick={()=>setMobileMenu(!mobileMenu)}
+
         >
 
-          <FaBars />
+          {
+
+            mobileMenu
+
+            ?
+
+            <FaTimes/>
+
+            :
+
+            <FaBars/>
+
+          }
 
         </button>
 
         <div className={styles.logo}>
 
-          <Link to="/">🛒 ShopSphere</Link>
+          <Link to="/" onClick={closeEverything}>
+
+            🛒 ShopSphere
+
+          </Link>
 
         </div>
 
       </div>
 
-      {/* Mobile Drawer */}
-
-      <div
-        className={`${styles.mobileMenu} ${mobileMenu ? styles.showMenu : ""}`}
-      >
-
-        <div className={styles.mobileHeader}>
-
-          <h2>Menu</h2>
-
-          <button
-            onClick={() => setMobileMenu(false)}
-            className={styles.closeBtn}
-          >
-
-            <FaTimes />
-
-          </button>
-
-        </div>
-
-        <Link
-          to="/"
-          onClick={() => setMobileMenu(false)}
-        >
-
-          Home
-
-        </Link>
-
-        <Link
-          to="/products"
-          onClick={() => setMobileMenu(false)}
-        >
-
-          Products
-
-        </Link>
-
-        <Link
-          to="/about"
-          onClick={() => setMobileMenu(false)}
-        >
-
-          About Us
-
-        </Link>
-
-        <Link
-          to="/faqs"
-          onClick={() => setMobileMenu(false)}
-        >
-
-          FAQs
-
-        </Link>
-
-        <Link
-          to="/shipping"
-          onClick={() => setMobileMenu(false)}
-        >
-
-          Shipping Policy
-
-        </Link>
-
-        <Link
-          to="/returns"
-          onClick={() => setMobileMenu(false)}
-        >
-
-          Returns Policy
-
-        </Link>
-
-      </div>
-
-      {mobileMenu && (
-
-        <div
-          className={styles.overlay}
-          onClick={() => setMobileMenu(false)}
-        />
-
-      )}
-
-      {/* Right */}
+      {/* RIGHT */}
 
       <ul className={styles.navLinks}>
 
-        <li className={styles.desktopLink}>
+        <li className={styles.desktopOnly}>
 
           <Link to="/">Home</Link>
 
         </li>
 
-        <li className={styles.desktopLink}>
+        <li className={styles.desktopOnly}>
 
           <Link to="/products">Products</Link>
 
@@ -190,13 +133,18 @@ function Navbar() {
         <li>
 
           <Link
+
             to="/wishlist"
+
             className={styles.iconLink}
+
           >
 
-            <FaHeart />
+            <FaHeart/>
 
-            {wishlistItems.length > 0 && (
+            {
+
+              wishlistItems.length>0 &&
 
               <span className={styles.badge}>
 
@@ -204,7 +152,7 @@ function Navbar() {
 
               </span>
 
-            )}
+            }
 
           </Link>
 
@@ -213,13 +161,18 @@ function Navbar() {
         <li>
 
           <Link
+
             to="/cart"
+
             className={styles.iconLink}
+
           >
 
-            <FaShoppingCart />
+            <FaShoppingCart/>
 
-            {totalItems > 0 && (
+            {
+
+              totalItems>0 &&
 
               <span className={styles.badge}>
 
@@ -227,7 +180,7 @@ function Navbar() {
 
               </span>
 
-            )}
+            }
 
           </Link>
 
@@ -236,168 +189,257 @@ function Navbar() {
         <li>
 
           <button
+
             className={styles.themeBtn}
+
             onClick={toggleTheme}
+
           >
 
-            {theme === "light"
-              ? <FaMoon />
-              : <FaSun />}
+            {
+
+              theme==="light"
+
+              ?
+
+              <FaMoon/>
+
+              :
+
+              <FaSun/>
+
+            }
 
           </button>
 
         </li>
 
-        {
+                {
 
           !currentUser ?
 
-            (
+          (
 
-              <li>
+            <li>
 
-                <Link to="/login">
+              <Link to="/login">
 
-                  <FaUser />
+                <FaUser />
 
-                </Link>
+              </Link>
 
-              </li>
+            </li>
 
-            )
+          )
 
-            :
+          :
 
-            (
+          (
 
-              <li className={styles.profileContainer}>
+            <li className={styles.profileContainer}>
 
-                <button
-                  className={styles.profileBtn}
-                  onClick={() => setShowMenu(!showMenu)}
-                >
+              <button
 
-                  {
+                className={styles.profileBtn}
 
-                    currentUser.photoURL ?
+                onClick={() => setShowProfile(!showProfile)}
 
-                      (
-
-                        <img
-                          src={currentUser.photoURL}
-                          alt="profile"
-                          className={styles.avatar}
-                        />
-
-                      )
-
-                      :
-
-                      (
-
-                        <FaUserCircle />
-
-                      )
-
-                  }
-
-                  <FaChevronDown />
-
-                </button>
+              >
 
                 {
 
-                  showMenu && (
+                  currentUser.photoURL ?
 
-                    <div className={styles.dropdown}>
+                  (
 
-                      <h4>
+                    <img
 
-                        {
+                      src={currentUser.photoURL}
 
-                          currentUser.displayName ||
+                      alt="profile"
 
-                          "ShopSphere User"
+                      className={styles.avatar}
 
-                        }
+                    />
 
-                      </h4>
+                  )
 
-                      <p>
+                  :
 
-                        {currentUser.email}
+                  (
 
-                      </p>
-
-                      <hr />
-
-                      <Link
-                        to="/profile"
-                        onClick={() => setShowMenu(false)}
-                      >
-
-                        <FaUser />
-
-                        My Profile
-
-                      </Link>
-
-                      <Link
-                        to="/wishlist"
-                        onClick={() => setShowMenu(false)}
-                      >
-
-                        <FaHeart />
-
-                        Wishlist
-
-                      </Link>
-
-                      <Link
-                        to="/cart"
-                        onClick={() => setShowMenu(false)}
-                      >
-
-                        <FaShoppingCart />
-
-                        Cart
-
-                      </Link>
-
-                      <Link
-                        to="/orders"
-                        onClick={() => setShowMenu(false)}
-                      >
-
-                        <FaBoxOpen />
-
-                        My Orders
-
-                      </Link>
-
-                      <button onClick={handleLogout}>
-
-                        <FaSignOutAlt />
-
-                        Logout
-
-                      </button>
-
-                    </div>
+                    <FaUserCircle />
 
                   )
 
                 }
 
-              </li>
+                <FaChevronDown />
 
-            )
+              </button>
+
+              {
+
+                showProfile &&
+
+                (
+
+                  <div className={styles.dropdown}>
+
+                    <h4>
+
+                      {
+
+                        currentUser.displayName ||
+
+                        "ShopSphere User"
+
+                      }
+
+                    </h4>
+
+                    <p>{currentUser.email}</p>
+
+                    <hr />
+
+                    <Link
+
+                      to="/profile"
+
+                      onClick={() => setShowProfile(false)}
+
+                    >
+
+                      <FaUser />
+
+                      My Profile
+
+                    </Link>
+
+                    <Link
+
+                      to="/wishlist"
+
+                      onClick={() => setShowProfile(false)}
+
+                    >
+
+                      <FaHeart />
+
+                      Wishlist
+
+                    </Link>
+
+                    <Link
+
+                      to="/cart"
+
+                      onClick={() => setShowProfile(false)}
+
+                    >
+
+                      <FaShoppingCart />
+
+                      Cart
+
+                    </Link>
+
+                    <Link
+
+                      to="/orders"
+
+                      onClick={() => setShowProfile(false)}
+
+                    >
+
+                      <FaBoxOpen />
+
+                      My Orders
+
+                    </Link>
+
+                    <button onClick={handleLogout}>
+
+                      <FaSignOutAlt />
+
+                      Logout
+
+                    </button>
+
+                  </div>
+
+                )
+
+              }
+
+            </li>
+
+          )
 
         }
 
       </ul>
 
     </nav>
+
+    {mobileMenu && (
+      <div className={styles.mobileLinks}>
+
+        <Link to="/" onClick={closeEverything}>
+          🏠 Home
+        </Link>
+
+        <Link to="/products" onClick={closeEverything}>
+          🛍 Products
+        </Link>
+
+        <Link to="/wishlist" onClick={closeEverything}>
+          ❤️ Wishlist
+          {wishlistItems.length > 0 && (
+            <span className={styles.badge}>
+              {wishlistItems.length}
+            </span>
+          )}
+        </Link>
+
+        <Link to="/cart" onClick={closeEverything}>
+          🛒 Cart
+          {totalItems > 0 && (
+            <span className={styles.badge}>
+              {totalItems}
+            </span>
+          )}
+        </Link>
+
+        <button
+          className={styles.mobileThemeBtn}
+          onClick={toggleTheme}
+        >
+          {theme === "light" ? (
+            <>
+              <FaMoon /> Dark Mode
+            </>
+          ) : (
+            <>
+              <FaSun /> Light Mode
+            </>
+          )}
+        </button>
+
+        {!currentUser ? (
+          <Link to="/login" onClick={closeEverything}>
+            👤 Login
+          </Link>
+        ) : (
+          <Link to="/profile" onClick={closeEverything}>
+            👤 Profile
+          </Link>
+        )}
+
+      </div>
+    )}
+
+    </>
 
   );
 
